@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="work_01_Client.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:work_01_Client"
+    Title="work_01_Client" Shell.FlyoutBehavior="Flyout" FlyoutBackgroundColor="Azure">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Doctor List"
+        ContentTemplate="{DataTemplate local:DoctorListPage}"
+        Route="DoctorListPage" />
+    <ShellContent
+        Title="Add Doctor"
+        ContentTemplate="{DataTemplate local:AddDoctorPage}"
+        Route="AddDoctorPage" />
+</Shell>
