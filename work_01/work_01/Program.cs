@@ -26,6 +26,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<HospitalDbContext>();
+    db.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -53,10 +59,27 @@ app.MapPost("/api/doctors", async([FromBody] DoctorDTO doctorDTO, [FromServices]
 {
     try
     {
-        string picture = null;
+        string picture = "default.png";
         if (!string.IsNullOrEmpty(doctorDTO.PictureBase64))
         {
-            picture = doctorDTO.PictureBase64;
+            try
+            {
+                var bytes = Convert.FromBase64String(doctorDTO.PictureBase64);
+                var fileName = Guid.NewGuid().ToString() + ".jpg";
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                var filePath = Path.Combine(uploadsFolder, fileName);
+                await File.WriteAllBytesAsync(filePath, bytes);
+                picture = fileName;
+            }
+            catch
+            {
+                // Fallback to default if base64 conversion fails
+                picture = "default.png";
+            }
         }
         var appointmentsList = new List<Appointment>();
         if (!string.IsNullOrWhiteSpace(doctorDTO.AppointmentJson))

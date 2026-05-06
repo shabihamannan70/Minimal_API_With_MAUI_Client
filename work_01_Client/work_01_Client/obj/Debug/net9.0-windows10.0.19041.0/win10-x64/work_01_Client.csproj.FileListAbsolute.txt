@@ -513,3 +513,4 @@ D:\ERA (1291250)\MAUI\Practice\work_01_Client\work_01_Client\obj\Debug\net9.0-wi
 D:\ERA (1291250)\MAUI\Practice\work_01_Client\work_01_Client\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 D:\ERA (1291250)\MAUI\Practice\work_01_Client\work_01_Client\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 D:\ERA (1291250)\MAUI\Practice\work_01_Client\work_01_Client\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+D:\ERA (1291250)\MAUI\Practice\work_01_Client\work_01_Client\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\work_01_Client.sourcelink.json
